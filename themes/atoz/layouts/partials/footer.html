@@ -1,0 +1,29 @@
+<footer class="text-white mt-1 p-1 bg-gradient-to-br from-slate-800 to-slate-900">
+    <div class="sm:container sm:mx-auto">
+      <section>
+        <address class="text-center">
+          mi.ki.ri.hassha.p@gmail.com
+        </address>
+      </section>
+      <section class="flex justify-around items-stretch">
+        <div class="flex-1 p-1 flex-wrap">
+          <h2> タグ </h2>
+    
+          {{- range $termName, $entries := .Site.Taxonomies.tags }}
+          <a href="{{ "/tags/" | relLangURL }}{{ $termName | urlize
+                  }}">{{ $termName | upper }}</a> ({{ $entries.Count }})
+              {{- end }}
+        </div>
+        <div class="flex-1 p-1 flex-wrap">
+          <h2> カテゴリー </h2>
+    
+          {{- range $termName, $entries := .Site.Taxonomies.categories }}
+          <a href="{{ "/categories/" | relLangURL }}{{ $termName | urlize
+                  }}">{{ $termName | upper }}</a> ({{ $entries.Count }})
+              {{- end }}
+        </div>
+      </section>
+    </div>
+  
+    
+    </footer>

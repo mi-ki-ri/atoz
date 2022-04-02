@@ -1,0 +1,9 @@
+baseURL = 'http://example.org/'
+languageCode = 'ja'
+title = 'Albums AtoZ by Mikirihassha P'
+theme = "atoz"
+hasCJKLanguage = true
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
