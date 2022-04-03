@@ -2,10 +2,12 @@
   <main class="sm:container sm:mx-auto ">
     <ul class="flex w-full flex-row justify-around items-stretch flex-wrap">
       {{ $burl := .Site.BaseURL }}
-      {{ $paginator := .Paginate .Site.RegularPages 40 }} 
+      {{ $paginator := .Paginate (where .Site.RegularPages.ByDate.Reverse "Section" "post") 40 }} 
       {{ range $paginator.Pages }}
-          <li class="flex min-h-[20%] w-5/12 border border-zinc-900	 rounded flex-col justify-start items-stretch p-1 m-1">
-              <header class="flex justify-start items-baseline border-b border-zinc-900 p-1 m-1">
+          <li class="flex h-96 w-96 border border-zinc-900 rounded-full flex-col justify-center items-stretch text-center p-2 m-3
+            bg-gradient-to-br from-cyan-200 via-white to-purple-300
+          ">
+              <header class="flex justify-center items-baseline border-zinc-900 p-1 m-1">
                 <a href="{{ .Permalink }}">
                   <h1 class="font-bold text-lg">{{ .Title }}</h1>
                 </a>
@@ -16,6 +18,13 @@
                   {{ .Summary }}..
                 </div>
               </a>
+                <div>
+                  {{- range $termName := .Params.tags }}
+                  <a href="{{ "/tags/" | relLangURL }}{{ $termName | urlize
+                          }}">{{ $termName | upper }}</a>
+                  {{- end }}
+                </div>
+              
           </li>
 
         {{ with $paginator.HasPrev }}
